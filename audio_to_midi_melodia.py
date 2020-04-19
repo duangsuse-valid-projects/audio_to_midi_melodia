@@ -1,3 +1,4 @@
+#!/bin/env python3
 # CREATED: 11/9/15 3:57 PM by Justin Salamon <justin.salamon@nyu.edu>
 
 import soundfile
@@ -81,7 +82,7 @@ def save_midi(outfile, notes, tempo):
         onset = note[0] * (tempo/60.)
         duration = note[1] * (tempo/60.)
         # duration = 1
-        pitch = note[2]
+        pitch = int(note[2])
         midifile.addNote(track, channel, pitch, onset, duration, volume)
 
     # And write it to disk.
@@ -104,7 +105,7 @@ def midi_to_notes(midi, fs, hop, smooth, minduration):
     # print(len(midi),len(midi_filt))
 
     notes = []
-    p_prev = None
+    p_prev = (-1) # python3 compat: (None > 0) is False in py2
     duration = 0
     onset = 0
     for n, p in enumerate(midi_filt):
