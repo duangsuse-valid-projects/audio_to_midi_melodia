@@ -18,29 +18,29 @@ Note: extracting a MIDI melody from a polyphonic audio file involves two main st
 # Usage
 
 ```bash
->python audio_to_midi_melodia.py infile outfile bpm [--smooth SMOOTH] [--minduration MINDURATION] [--jams]
+python audio_to_midi_melodia.py infile outfile [--bpm] [--smooth SMOOTH] [--minduration MINDURATION] [--jams]
 ```
 
 For example:
 
 ```bash
->python audio_to_midi_melodia.py ~/song.wav ~/song.mid 60 --smooth 0.25 --minduration 0.1 --jams
+python audio_to_midi_melodia.py ~/song.wav ~/song.mid --bpm 120 --smooth 0.25 --minduration 0.1 --jams
 ```
 
 Details:
 
 ```plain
-usage: audio_to_midi_melodia.py [-h] [--smooth SMOOTH]
+usage: audio_to_midi_melodia.py [-h] [--bpm BPM] [--smooth SMOOTH]
                                 [--minduration MINDURATION] [--jams]
-                                infile outfile bpm
+                                infile outfile
 
 positional arguments:
   infile                Path to input audio file.
   outfile               Path for saving output MIDI file.
-  bpm                   Tempo of the track in BPM.
 
 optional arguments:
   -h, --help            show this help message and exit
+  --bpm BPM             Tempo of the track in BPM.
   --smooth SMOOTH       Smooth the pitch sequence with a median filter of the
                         provided duration (in seconds).
   --minduration MINDURATION

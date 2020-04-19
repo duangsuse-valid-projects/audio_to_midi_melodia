@@ -25,15 +25,6 @@ and ignores the provided BPM value.
 Note: Melodia can work pretty well and is the result of several years of
 research. The note segmentation/quantization code was hacked in about 30
 minutes. Proceed at your own risk... :)
-
-usage: audio_to_midi_melodia.py [-h] [--smooth SMOOTH]
-                                [--minduration MINDURATION] [--jams]
-                                infile outfile bpm
-
-
-Examples:
-python audio_to_midi_melodia.py --smooth 0.25 --minduration 0.1 --jams
-                                ~/song.wav ~/song.mid 60
 '''
 
 
@@ -79,8 +70,8 @@ def save_midi(outfile, notes, tempo):
     volume = 100
 
     for note in notes:
-        onset = note[0] * (tempo/60.)
-        duration = note[1] * (tempo/60.)
+        onset = note[0] * (tempo/60.0)
+        duration = note[1] * (tempo/60.0)
         # duration = 1
         pitch = int(note[2])
         midifile.addNote(track, channel, pitch, onset, duration, volume)
@@ -142,7 +133,7 @@ def hz2midi(hz):
     hz_nonneg = hz.copy()
     idx = hz_nonneg <= 0
     hz_nonneg[idx] = 1
-    midi = 69 + 12*np.log2(hz_nonneg/440.)
+    midi = 69 + 12*np.log2(hz_nonneg/440.0)
     midi[idx] = 0
 
     # round
@@ -209,7 +200,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("infile", help="Path to input audio file.")
     parser.add_argument("outfile", help="Path for saving output MIDI file.")
-    parser.add_argument("-bpm", type=int, default=60, help="Tempo of the track in BPM.")
+    parser.add_argument("--bpm", type=int, default=120, help="Tempo of the track in BPM.")
     parser.add_argument("--smooth", type=float, default=0.25,
                         help="Smooth the pitch sequence with a median filter "
                              "of the provided duration (in seconds).")
