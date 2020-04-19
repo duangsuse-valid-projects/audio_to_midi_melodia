@@ -11,6 +11,8 @@ Note: extracting a MIDI melody from a polyphonic audio file involves two main st
 
 **Note segmentation** is the task of converting the continuous f0 curve estimated by Melodia (which can contain e.g. glissando and vibrato) into a sequence of quantized notes each with a start time, end time, and fixed pitch value. **Unlike Melodia, the note segmentation code used here was written during a single-day hackathon** and designed to be as simple as possible. Peformance will vary depending on musical content, and it will most likely not provide results that are as good as those provided by state-of-the-art note segmentation/quantization algorithms.
 
+> NOTE: This script depends on Vamp MELODIA plugin, go [here](https://www.upf.edu/web/mtg/melodia) (install guide) and fill download [form](https://docs.google.com/forms/d/e/1FAIpQLScAWn0xrRgSsMIacBZEv2sFnqnlHBDVe1bSxnrMB6E6lV_ykw/viewform).
+
 # Usage
 ```bash
 >python audio_to_midi_melodia.py infile outfile bpm [--smooth SMOOTH] [--minduration MINDURATION] [--jams]

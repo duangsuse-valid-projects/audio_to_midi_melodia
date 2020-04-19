@@ -209,15 +209,15 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("infile", help="Path to input audio file.")
     parser.add_argument("outfile", help="Path for saving output MIDI file.")
-    parser.add_argument("bpm", type=int, help="Tempo of the track in BPM.")
+    parser.add_argument("-bpm", type=int, default=60, help="Tempo of the track in BPM.")
     parser.add_argument("--smooth", type=float, default=0.25,
                         help="Smooth the pitch sequence with a median filter "
                              "of the provided duration (in seconds).")
     parser.add_argument("--minduration", type=float, default=0.1,
                         help="Minimum allowed duration for note (in seconds). "
                              "Shorter notes will be removed.")
-    parser.add_argument("--jams", action="store_const", const=True,
-                        default=False, help="Also save output in JAMS format.")
+    parser.add_argument("--jams", action="store_true", default=False,
+                        help="Also save output in JAMS format.")
 
     args = parser.parse_args()
 
