@@ -1,6 +1,6 @@
 f0.npy
-train05.jams
-train05.mid
+*.jams
+*.mid
 .idea/.name
 .idea/audio_to_midi_melodia.iml
 .idea/encodings.xml
@@ -12,3 +12,4 @@ train05.mid
 .idea/*
 __init__.pyc
 audio_to_midi_melodia.pyc
+__pycache__/
